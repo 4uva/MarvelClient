@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:view="clr-namespace:MarvelClientApp.Views"
+             x:Class="MarvelClientApp.Views.ItemsPage"
+             Title="Marvel Heroes"
+             x:Name="BrowseItemsPage">
+    <ContentPage.Resources>
+        <DataTemplate x:Key="CharacterTemplate">
+            <ViewCell>
+                <StackLayout Padding="10" Orientation="Horizontal">
+                    <Image HorizontalOptions="Start"
+                           VerticalOptions="CenterAndExpand"
+                           Source="{Binding ImageUri}"
+                           Aspect="AspectFit"
+                           WidthRequest="50"
+                           HeightRequest="50"/>
+                    <Label Text="{Binding Name}" 
+                           HorizontalOptions="Fill"
+                           VerticalOptions="StartAndExpand"
+                           LineBreakMode="WordWrap"
+                           Style="{DynamicResource ListItemTextStyle}" 
+                           FontSize="14" />
+                </StackLayout>
+            </ViewCell>
+        </DataTemplate>
+        <DataTemplate x:Key="LoadMoreTemplate">
+            <ViewCell Appearing="OnMoreDataAppearing">
+                <StackLayout Padding="10">
+                    <Label Text="Loading more data..." 
+                           LineBreakMode="NoWrap" 
+                           FontAttributes="Italic"
+                           Style="{DynamicResource ListItemTextStyle}" 
+                           FontSize="14" />
+                </StackLayout>
+            </ViewCell>
+        </DataTemplate>
+        <DataTemplate x:Key="LoadingFailedTemplate">
+            <ViewCell>
+                <StackLayout Padding="10">
+                    <Label Text="Couldn't get data from Marvel server..." 
+                           LineBreakMode="WordWrap" 
+                           FontAttributes="Italic"
+                           Style="{DynamicResource ListItemTextStyle}" 
+                           FontSize="12" />
+                    <Label Text="(Tap to retry)" 
+                           LineBreakMode="NoWrap" 
+                           HorizontalTextAlignment="Center"
+                           FontAttributes="Italic"
+                           Style="{DynamicResource ListItemDetailTextStyle}" 
+                           FontSize="10" />
+                </StackLayout>
+            </ViewCell>
+        </DataTemplate>
+        <view:CharacterListItemTemplateSelector
+            x:Key="TemplateSelector"
+            CharacterTemplate="{StaticResource CharacterTemplate}"
+            LoadMoreTemplate="{StaticResource LoadMoreTemplate}"
+            LoadingFailedTemplate="{StaticResource LoadingFailedTemplate}"/>
+    </ContentPage.Resources>
+    <StackLayout>
+        <ListView x:Name="ItemsListView"
+                ItemsSource="{Binding Items}"
+                VerticalOptions="FillAndExpand"
+                HasUnevenRows="true"
+                IsPullToRefreshEnabled="false"
+                IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                CachingStrategy="RecycleElement"
+                ItemSelected="OnItemSelected"
+                ItemTemplate="{StaticResource TemplateSelector}"/>
+    </StackLayout>
+</ContentPage>

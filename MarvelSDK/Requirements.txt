@@ -1,0 +1,22 @@
+﻿Create a mobile application that shows the list of Marvel Characters and their Details using Xamarin.
+
+ 
+
+The requirements:
+
+1.    Use Xamarin SDK
+
+2.    Support one mobile platform (Android or iOS) by your choice
+
+3.    Source code should be shared using Github or Gitlab
+
+4.    An app should show a list of Marvel Characters on the main screen
+
+5.    Taping on the list item should open the screen with the Character details
+
+6.    Official Marvel API should be used https://developer.marvel.com/docs
+
+7.    Add README file with a short description on why you’ve decided to implement the app in the way it exists (like, why these libraries are used; how many hours spent to reach the result; and any information you think may be important while we are reviewing the app). We prefer to see the README in English.
+
+ 
+

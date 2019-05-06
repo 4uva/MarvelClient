@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MarvelClientApp.Views.ItemDetailPage"
+             Title="{Binding Title}">
+    <ContentPage.Resources>
+        <DataTemplate x:Key="LinkTemplate">
+            <ViewCell>
+                <Label HorizontalOptions="Start" VerticalOptions="Start">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="{Binding UrlType}"
+                                              TextColor="Blue"
+                                              TextDecorations="Underline">
+                                <Span.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding ClickCommand}"/>
+                                </Span.GestureRecognizers>
+                            </Span>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+            </ViewCell>
+        </DataTemplate>
+    </ContentPage.Resources>
+    <ScrollView>
+        <StackLayout Spacing="20" Padding="15">
+            <Image HorizontalOptions="Center"
+                   VerticalOptions="StartAndExpand"
+                   Source="{Binding ImageUri}"
+                   Aspect="AspectFit"/>
+            <Label HorizontalOptions="Fill"
+                   VerticalOptions="StartAndExpand"
+                   Text="{Binding Description}"
+                   FontSize="Small"/>
+            <StackLayout VerticalOptions="Fill" Orientation="Vertical">
+                <ListView
+                    HeightRequest="100"
+                    Header="Links:"
+                    ItemsSource="{Binding Links}"
+                    VerticalOptions="FillAndExpand"
+                    RowHeight="25"
+                    IsPullToRefreshEnabled="false"
+                    CachingStrategy="RecycleElement"
+                    ItemTemplate="{StaticResource LinkTemplate}"/>
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
