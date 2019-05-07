@@ -12,14 +12,14 @@ using System.Windows.Input;
 
 namespace MarvelClientApp.ViewModels
 {
-    public class CharactersViewModel : BaseViewModel
+    public class CharacterListViewModel : BaseViewModel
     {
         public ObservableCollection<ListItemViewModel> Items { get; }
         public ICommand LoadMoreItemsCommand { get; }
 
         CharacterEngine engine;
 
-        public CharactersViewModel(CharacterEngine engine)
+        public CharacterListViewModel(CharacterEngine engine)
         {
             this.engine = engine;
 

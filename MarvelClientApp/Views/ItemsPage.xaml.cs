@@ -42,7 +42,7 @@ namespace MarvelClientApp.Views
 
         void AskForMoreData()
         {
-            var vm = (CharactersViewModel)BindingContext;
+            var vm = (CharacterListViewModel)BindingContext;
             vm.LoadMoreItemsCommand.Execute(null);
         }
     }

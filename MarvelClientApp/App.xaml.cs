@@ -18,7 +18,7 @@ namespace MarvelClientApp
 
         const string publicKey = "-- ENTER PUBLIC KEY HERE --";
         const string privateKey = "-- ENTER PRIVATE KEY HERE --";
-        CharactersViewModel charactersViewModel;
+        CharacterListViewModel characterListViewModel;
 
         public App()
         {
@@ -29,8 +29,8 @@ namespace MarvelClientApp
         protected override void OnStart()
         {
             LoadEngine();
-            charactersViewModel = new CharactersViewModel(engine);
-            MainPage.BindingContext = charactersViewModel;
+            characterListViewModel = new CharacterListViewModel(engine);
+            MainPage.BindingContext = characterListViewModel;
         }
 
         protected override void OnSleep()
