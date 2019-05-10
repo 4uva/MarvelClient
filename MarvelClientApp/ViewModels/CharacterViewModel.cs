@@ -21,9 +21,10 @@ namespace MarvelClientApp.ViewModels
             Description = character.Description;
             if (character.Urls != null)
             {
-                Links = new List<CharacterLinkViewModel>();
+                var links = new List<CharacterLinkViewModel>();
                 foreach (var url in character.Urls)
-                    Links.Add(new CharacterLinkViewModel(url));
+                    links.Add(new CharacterLinkViewModel(url));
+                Links = links;
             }
         }
 
@@ -31,6 +32,6 @@ namespace MarvelClientApp.ViewModels
         public string Name { get; }
         public Uri ImageUri { get; }
         public string Description { get; }
-        public List<CharacterLinkViewModel> Links { get; }
+        public IReadOnlyCollection<CharacterLinkViewModel> Links { get; }
     }
 }
