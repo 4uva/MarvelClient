@@ -20,7 +20,7 @@ namespace MarvelSDK.Model
     class Storage
     {
         List<Character> characters = new List<Character>();
-        XmlSerializer serializer = new XmlSerializer(typeof(List<Character>));
+       
 
         public int Length => characters.Count;
 
@@ -43,12 +43,6 @@ namespace MarvelSDK.Model
         public string Serialize()
         {
             return JsonConvert.SerializeObject(characters);
-            //// код взят отсюда: https://stackoverflow.com/a/2434558/10243782
-            //using (var textWriter = new StringWriter())
-            //{
-            //    serializer.Serialize(textWriter, characters);
-            //    return textWriter.ToString();
-            //}
         }
 
         public void Deserialize(string content)
@@ -56,10 +50,6 @@ namespace MarvelSDK.Model
             try
             {
                 characters = JsonConvert.DeserializeObject<List<Character>>(content);
-                //using (var textReader = new StringReader(content))
-                //{
-                //    characters = (List<Character>)serializer.Deserialize(textReader);
-                //}
             }
             catch (Exception ex)
             {
