@@ -2,13 +2,13 @@
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Threading.Tasks;
+using System.Collections.Generic;
+using System.Windows.Input;
 
 using Xamarin.Forms;
 
-using MarvelClientApp.Views;
 using MarvelSDK.Model;
-using System.Collections.Generic;
-using System.Windows.Input;
+using MarvelClientApp.Models;
 
 namespace MarvelClientApp.ViewModels
 {

@@ -7,8 +7,8 @@ namespace MarvelSDK.Model
     [Serializable]
     public class DataDownloadException : Exception
     {
-        public DataDownloadException(Exception innerException)
-            : base("Couldn't download data from Marvel", innerException)
+        public DataDownloadException(string errorText, string reasonPhrase)
+            : base("Couldn't download data from Marvel: " + reasonPhrase + "\n" + errorText)
         {
         }
 

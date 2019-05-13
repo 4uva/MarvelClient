@@ -1,10 +1,10 @@
 ﻿using System;
+using System.Diagnostics;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using MarvelClientApp.Views;
-using MarvelSDK.Model;
 using MarvelClientApp.ViewModels;
-using System.Diagnostics;
+using MarvelClientApp.Models;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace MarvelClientApp

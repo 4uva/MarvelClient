@@ -5,9 +5,10 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Xml.Serialization;
+using MarvelSDK.Model;
 using Newtonsoft.Json;
 
-namespace MarvelSDK.Model
+namespace MarvelClientApp.Models
 {
     /*
      *  1) мы идентифицируем героев по индексу и никогда не пользуемся фильтрацией,
@@ -20,7 +21,6 @@ namespace MarvelSDK.Model
     class Storage
     {
         List<Character> characters = new List<Character>();
-       
 
         public int Length => characters.Count;
 

@@ -27,21 +27,31 @@ namespace MarvelSDK.Model
 
         public async Task<T> GetAsync<T>(
             string webApiAddress,
-            Dictionary<string, object> parameters)
+            Dictionary<string, string> parameters)
         {
             var queryString = ComposeQueryString(parameters);
-            HttpResponseMessage response = await client.GetAsync(webApiAddress + queryString);
-            response.EnsureSuccessStatusCode();
-            return await response.Content.ReadAsAsync<T>();
+            using (HttpResponseMessage response =
+                await client.GetAsync(webApiAddress + queryString))
+            {
+                if (response.IsSuccessStatusCode)
+                {
+                    return await response.Content.ReadAsAsync<T>();
+                }
+                else
+                {
+                    var errorText = await response.Content.ReadAsStringAsync();
+                    throw new DataDownloadException(errorText, response.ReasonPhrase);
+                }
+            }
         }
 
-        private string ComposeQueryString(Dictionary<string, object> parameters)
+        private string ComposeQueryString(Dictionary<string, string> parameters)
         {
             StringBuilder sb = new StringBuilder();
             foreach (var keyValue in parameters)
             {
                 var key = WebUtility.HtmlEncode(keyValue.Key);
-                var value = WebUtility.HtmlEncode(keyValue.Value.ToString());
+                var value = WebUtility.HtmlEncode(keyValue.Value);
                 sb.AppendFormat("&{0}={1}", key, value);
             }
             if (sb.Length > 0)

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 
 namespace MarvelSDK.Model
 {
-   
     public class Character
     {
         public int Id { get; set; } // optional?

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MarvelSDK.Model
 {
-    class CharacterDataContainer
+    public class CharacterDataContainer
     {
         public int? Offset { get; set; }
         public int? Limit { get; set; }
